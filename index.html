@@ -1,127 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css"
-    />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://cdn-icons-png.flaticon.com/512/3706/3706642.png"
-    />
-    <style>
-      h1 {
-        position: relative;
-        padding: 0;
-        margin: 0;
-        font-family: "Raleway", sans-serif;
-        font-weight: 300;
-        font-size: 20px;
-        color: #c77979;
-        -webkit-transition: all 0.4s ease 0s;
-        -o-transition: all 0.4s ease 0s;
-        transition: all 0.4s ease 0s;
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCPicker - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="wrapper"> 
+        <header class="site-header">
+          <nav>
+            <a href="/"><strong>PCPicker</strong></a> | 
+            <a href="/">Home</a>
+            <a href="/">FAQ</a>
+            <a href="/">Drafts</a>
+            <a href="/">Notifications</a>
+            <a href="/">Profile</a>
+            <a href="/">Sign Out</a>
+          </nav>
+        </header>
+      
+        <main>
+          <div class="home-page">
+            <div class="block">
+              <h1>THE GUIDED EXPERIENCE</h1>
+              <h2>Leave the configuring to us</h2>
+              <p class="intro">Share your requirements and we will find the best device for your needs, all things considered.</p>
+              <p>(Click here for forms, site under construction)</p>
+              <a href="/" class="button">Launch Experience</a>
+            </div>
+            <div class="block">
+              <img src="https://www.ant-pc.com/Case/NZXT_H710_White2.png" alt="A computer waiting to be sold">
+            </div>
+          
+          <div class="block">
+            <img src="https://www.ipcstore.com/media/wysiwyg/gaming/gaming-pc-parts.png" alt="A computer waiting to be sold">
+          </div>
+          <div class="block">
+            <h1>BUILD YOUR OWN</h1>
+            <h2>We’ll help you pick just the right components</h2>
+            <p class="intro">Share your requirements and we will help YOU pick the right components. See how your choices will affect performance.</p>
+            <a href="/" class="button">Start Building</a>
+          </div>
 
-      h1 span {
-        display: block;
+          <div class="block">
+            <img src="https://www.datocms-assets.com/34299/1622215631-brand-2-1-8eeaa5bbf3b0af8e58ea5d3cb82609eaeb42a9c658536b2d3994c3ca842a4aac.png" alt="A computer waiting to be sold">
+          </div>
+          <div class="block">
+            <h1>FIND SELLERS</h1>
+            <p class="intro">Already know what you’re looking for? Find the best sellers to buy from.</p>
+            <a href="/" class="button">Begin</a>
+          </div>
+        </div>
 
-        line-height: 1.3;
-      }
-      h1 em {
-        font-style: normal;
-        font-weight: 600;
-      }
-      .nine h1 {
-        text-align: center;
-        font-size: 30px;
-
-        color: #222;
-        letter-spacing: 1px;
-        font-family: "Raleway", serif;
-        font-weight: 400;
-        margin-top: 30px;
-      }
-      .nine h1 span {
-        margin-top: 5px;
-        font-size: 15px;
-        color: #444;
-        word-spacing: 1px;
-        font-weight: normal;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-family: "Raleway", sans-serif;
-        font-weight: 500;
-
-        display: grid;
-        grid-template-columns: 1fr max-content 1fr;
-        grid-template-rows: 27px 0;
-        grid-gap: 20px;
-        align-items: center;
-      }
-
-      .nine h1 span:after,
-      .nine h1 span:before {
-        content: " ";
-        display: block;
-        border-bottom: 1px solid #ccc;
-        border-top: 1px solid #ccc;
-        height: 5px;
-        background-color: #f8f8f8;
-      }
-
-      .btn {
-        border: none;
-        display: block;
-        text-align: center;
-        cursor: pointer;
-        text-transform: uppercase;
-        outline: none;
-        overflow: hidden;
-        position: relative;
-        color: #fff;
-        font-weight: 700;
-        font-size: 15px;
-        background-color: #222;
-        padding: 17px 60px;
-        margin: 0 auto;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .btn span {
-        position: relative;
-        z-index: 1;
-      }
-
-      .btn:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 490%;
-        width: 140%;
-        background: #78c7d2;
-        -webkit-transition: all 0.5s ease-in-out;
-        transition: all 0.5s ease-in-out;
-        -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
-        transform: translateX(-98%) translateY(-25%) rotate(45deg);
-      }
-
-      .btn:hover:after {
-        -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
-        transform: translateX(-9%) translateY(-25%) rotate(45deg);
-      }
-    </style>
-    <title>Add PC</title>
-  </head>
-
-
-
-  <body>
-    
-  </body>
+        </main>
+      
+        <footer>
+          <small>All content &copy; Nirmal K. All rights reserved.</small>
+          <p>Developed by CB.EN.U4CSE19038 ,Nirmal K ,19CSE461-Net Centric Programming</p>
+        </footer>
+      </div>
+</body>
+</html>
