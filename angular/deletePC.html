@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn-icons-png.flaticon.com/512/3706/3706642.png"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <style>
+      h1 {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        color: #080808;
+        -webkit-transition: all 0.4s ease 0s;
+        -o-transition: all 0.4s ease 0s;
+        transition: all 0.4s ease 0s;
+      }
+
+      h1 span {
+        display: block;
+
+        line-height: 1.3;
+      }
+      h1 em {
+        font-style: normal;
+        font-weight: 600;
+      }
+      .nine h1 {
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase;
+        color: #222;
+        letter-spacing: 1px;
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        margin-top: 30px;
+      }
+      .nine h1 span {
+        margin-top: 5px;
+        font-size: 15px;
+        color: #444;
+        word-spacing: 1px;
+        font-weight: normal;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;
+
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-template-rows: 27px 0;
+        grid-gap: 20px;
+        align-items: center;
+      }
+
+      .nine h1 span:after,
+      .nine h1 span:before {
+        content: " ";
+        display: block;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        height: 5px;
+        background-color: #f8f8f8;
+      }
+
+      
+    </style>
+    <title>Delete Events</title>
+  </head>
+  <body >
+    <div>
+      <center>
+        <div class="nine">
+          <h1>Delete PC record</h1>
+        </div>
+      </center>
+
+      <button
+          class="btn-6"
+          type="submit"
+          style="margin: 20px"
+          ng-click="openPC()"
+        >
+
+      <form  name="pcForm"   ng-app="mainApp" ng-controller="pcController" novalidate  >
+        <div class="field" style="margin: 10px">
+          <label class="label">PC Name</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              ng-model="title"
+              name="title"
+              required
+            />
+             
+              <span ng-show="pcForm.title.$error.required" style="color: red; margin-top:20px"
+                >PC Name is required.</span
+              >
+            </span>
+          </div>
+        </div>
+        
+
+        <button
+          class="btn-6"
+          type="submit"
+          style="margin: 20px"
+          ng-click="Submit()"
+        >
+          <span>Submit</span>
+        </button>
+      </form>
+      <script>
+        var app = angular.module("mainApp", []);
+        app.controller("pcController", function($scope,$http) {
+          $scope.title = "";
+          
+          $scope.Submit = function() {
+            console.log($scope.title);
+            
+            var data =$scope.title;
+            $http.delete("http://localhost:3000/pc/"+ data).then(
+              function(response) {
+                
+                  alert("PC record deleted successfully");
+                
+              },
+               
+            );
+
+
+          };
+
+          $scope.openPC = function() {
+            window.location.href = "http://localhost:3000/pc";
+          };
+          
+        });
+    
+ 
+      </script>
+    </div>
+  </body>
+</html>

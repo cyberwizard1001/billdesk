@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css" />
+  <link href="styles.css" rel="stylesheet" />
+  <style>
+    h1 {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      font-family: "Raleway", sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+      color: #080808;
+      -webkit-transition: all 0.4s ease 0s;
+      -o-transition: all 0.4s ease 0s;
+      transition: all 0.4s ease 0s;
+    }
+
+    h1 span {
+      display: block;
+
+      line-height: 1.3;
+    }
+
+    h1 em {
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .nine h1 {
+      text-align: center;
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #222;
+      letter-spacing: 1px;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      margin-top: 30px;
+    }
+
+    .nine h1 span {
+      margin-top: 5px;
+      font-size: 15px;
+      color: #444;
+      word-spacing: 1px;
+      font-weight: normal;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: "Raleway", sans-serif;
+      font-weight: 500;
+
+      display: grid;
+      grid-template-columns: 1fr max-content 1fr;
+      grid-template-rows: 27px 0;
+      grid-gap: 20px;
+      align-items: center;
+    }
+
+    .nine h1 span:after,
+    .nine h1 span:before {
+      content: " ";
+      display: block;
+      border-bottom: 1px solid #ccc;
+      border-top: 1px solid #ccc;
+      height: 5px;
+      background-color: #f8f8f8;
+    }
+
+   
+  </style>
+  <title>Add PC</title>
+</head>
+
+<body>
+  <div>
+    <center>
+      <div class="nine">
+        <h1>Add PC</h1>
+      </div>
+    </center>
+    <form name="PCForm" ng-app="mainApp" ng-controller="pcCtrl" novalidate>
+      <div class="field" style="margin: 10px">
+        <label class="label">Product Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input" ng-model="name" name="name" required />
+
+          <span ng-show="PCForm.title.$error.required" style="color: red; margin-top:20px">Product Name is
+            required.</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="field" style="margin: 10px">
+        <label class="label">Product ID</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input" ng-model="productID" name="productID" required />
+
+          <span ng-show="PCForm.productID.$error.required" style="color: red; margin-top:20px">Product ID is
+            required.</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="field" style="margin: 10px">
+        <label class="label">Price</label>
+        <div class="control">
+          <input class="input" type="number" placeholder="Price of the PC" ng-model="price" required min="0"
+            max="2000000" name="price" />
+          <span style="color: red" ng-show="PCForm.price.$dirty && PCForm.price.$invalid">
+            <span ng-show="PCForm.price.$error.required">Price is required.</span>
+            <span ng-show="PCForm.price.$error.min">Price is too low.</span>
+            <span ng-show="PCForm.price.$error.max">Price is too high.</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="field" style="margin: 10px">
+        <label class="label">Link</label>
+        <div class="control">
+          <input class="input" type="url" placeholder="Text input" ng-model="link" name="link" />
+        </div>
+      </div>
+
+
+      <div class="field" style="margin: 10px">
+        <label class="label">OEM</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input" ng-model="oem" name="oem" required />
+          <span ng-show="PCForm.oem.$error.required" style="color: red; margin-top:20px">OEM is required.</span>
+        </div>
+
+      </div>
+
+      <div class="field" style="margin: 10px">
+        <label class="label">CPU</label>
+        <div class="control">
+          <input class="input" placeholder="Enter text" ng-model="cpu" name="cpu" required></input>
+          <span ng-show="PCForm.cpu.$error.required" style="color: red; margin-top:20px">CPU is required.</span>
+        </div>
+      </div>
+
+      <div class="field" style="margin: 10px">
+        <label class="label">GPU</label>
+        <div class="control">
+          <input class="input" placeholder="Enter text" ng-model="gpu" name="gpu" required></input>
+          <span ng-show="PCForm.gpu.$error.required" style="color: red; margin-top:20px">GPU is required.</span>
+        </div>
+
+      </div>
+
+      <div class="field" style="margin: 10px">
+        <label class="label">Memory</label>
+        <div class="control">
+          <input class="input" placeholder="Enter text" ng-model="memory" name="memory" required></input>
+          <span ng-show="PCForm.memory.$error.required" style="color: red; margin-top:20px">Memory is required.</span>
+        </div>
+      </div>
+
+      <div style="margin: 20px;">
+        <label class="label">Storage</label>
+        <input type="radio" value="512GB" ng-model="storage" name="storage" id="storage">512 GB<br>
+        <input type="radio" value="1024GB" ng-storagel="storage" name="storage" id="storage">1024 GB <br>
+
+      </div>
+
+      <div class="field" style="margin: 10px">
+        <label class="label">Additional Info</label>
+        <div class="control">
+          <textarea class="input" placeholder="Enter text" ng-model="additional_info" name="additional_info"></textarea>
+        </div>
+      </div>
+
+      <button class="btn-6" type="submit" style="margin: 20px" ng-click="Submit()">
+        <span>Submit</span>
+      </button>
+    </form>
+    <script>
+      var app = angular.module("mainApp", []);
+      app.controller("pcCtrl", function ($scope, $http) {
+        $scope.name = "";
+        $scope.productID = "";
+        $scope.service_locations = "";
+        $scope.link = "";
+        $scope.oem = "";
+        $scope.cpu = "";
+        $scope.price = "";
+        $scope.cpu = "";
+        $scope.gpu = "";
+        $scope.storage = "";
+        $scope.memory = "";
+        $scope.additional_info = "";
+        $scope.Submit = function () {
+          console.log($scope.name);
+          console.log($scope.oem);
+          console.log($scope.cpu);
+          console.log($scope.gpu);
+          console.log($scope.price);
+          console.log($scope.storage);
+          console.log($scope.memory);
+          console.log($scope.additional_info);
+          console.log($scope.productID);
+          console.log($scope.link);
+          console.log($scope.service_locations)
+          var data = {
+            name: $scope.name,
+            oem: $scope.oem,
+            cpu: $scope.cpu,
+            gpu: $scope.date,
+            service_locations: $scope.time,
+            price: $scope.price,
+            storage: $scope.storage,
+            memory: $scope.memory,
+            additional_info: $scope.additional_info,
+            productID: $scope.productID,
+            link: $scope.link
+
+          };
+          $http.post("http://localhost:3000/pc", data).then(
+            function (response) {
+              if (response['data'] == "PC already exists in database") {
+                alert("Data already exists");
+              }
+              else {
+                alert("Record added");
+              }
+            },
+
+          );
+
+
+        };
+      });
+
+
+    </script>
+  </div>
+</body>
+
+</html>

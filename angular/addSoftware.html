@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <style>
+      h1 {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        color: #080808;
+        -webkit-transition: all 0.4s ease 0s;
+        -o-transition: all 0.4s ease 0s;
+        transition: all 0.4s ease 0s;
+      }
+
+      h1 span {
+        display: block;
+
+        line-height: 1.3;
+      }
+      h1 em {
+        font-style: normal;
+        font-weight: 600;
+      }
+      .nine h1 {
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase;
+        color: #222;
+        letter-spacing: 1px;
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        margin-top: 30px;
+      }
+      .nine h1 span {
+        margin-top: 5px;
+        font-size: 15px;
+        color: #444;
+        word-spacing: 1px;
+        font-weight: normal;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;
+
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-template-rows: 27px 0;
+        grid-gap: 20px;
+        align-items: center;
+      }
+
+      .nine h1 span:after,
+      .nine h1 span:before {
+        content: " ";
+        display: block;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        height: 5px;
+        background-color: #f8f8f8;
+      }
+
+    </style>
+    <title>Add Software</title>
+  </head>
+  <body >
+    <div>
+      <center>
+        <div class="nine">
+          <h1>Add Software</h1>
+        </div>
+      </center>
+      <form  name="SoftwareForm"   ng-app="mainApp" ng-controller="softwareCtrl" novalidate  >
+        <div class="field" style="margin: 10px">
+          <label class="label"> Software Name</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              ng-model="name"
+              name="name"
+              required
+            />
+             
+              <span ng-show="SoftwareForm.title.$error.required" style="color: red; margin-top:20px"
+                >Software Name is required.</span
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="field" style="margin: 10px">
+            <label class="label">Software ID</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Text input"
+                ng-model="softwareID"
+                name="softwareID"
+                required
+              />
+               
+                <span ng-show="SoftwareForm.softwareID.$error.required" style="color: red; margin-top:20px"
+                  >Software ID is required.</span
+                >
+              </span>
+            </div>
+          </div>
+
+          <div class="field" style="margin: 10px">
+            <label class="label">Cost</label>
+            <div class="control">
+              <input
+                class="input"
+                type="number"
+                placeholder="cost of the software"
+                ng-model="cost"
+                required
+                min="0"
+                max="2000000"
+                name="cost"
+              />
+              <span
+                style="color: red"
+                ng-show="SoftwareForm.cost.$dirty && SoftwareForm.cost.$invalid"
+              >
+                <span ng-show="SoftwareForm.cost.$error.required">Cost is required.</span>
+                <span ng-show="SoftwareForm.cost.$error.min">Cost is too low.</span>
+                <span ng-show="SoftwareForm.cost.$error.max">Cost is too high.</span>
+              </span>
+            </div>
+          </div>
+
+          
+        <div class="field" style="margin: 10px">
+          <label class="label">Developer</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              ng-model="developer"
+              name="developer"
+              required
+            />
+            <span ng-show="SoftwareForm.developer.$error.required" style="color: red; margin-top:20px"
+              >Developer is required.</span>
+            </div>
+      
+         </div>
+
+        <div class="field" style="margin: 10px">
+          <label class="label">Link</label>
+          <div class="control">
+            <input
+              class="input"
+              type="url"
+              placeholder="Text input"
+              ng-model="link"
+              name="link"
+            />
+            </div>
+         
+        <div class="field" style="margin: 10px">
+          <label class="label">Miniumum requirements</label>
+          <div class="control">
+            <input
+              class="input"
+              placeholder="Enter text"
+              ng-model="minimum_requirements"
+              name="minimum_requirements"
+              required
+            ></input>
+            <span ng-show="SoftwareForm.minimum_requirements.$error.required" style="color: red; margin-top:20px"
+              >Minimum Requirements is required.</span>
+           </div>
+        </div>
+
+        <div class="field" style="margin: 10px">
+          <label class="label">Optimum Requirements</label>
+          <div class="control">
+            <input
+              class="input"
+              placeholder="Enter text"
+              ng-model="optimum_requirements"
+              name="optimum_requirements"
+              required
+            ></input>
+            <span ng-show="SoftwareForm.optimum_requirements.$error.required" style="color: red; margin-top:20px"
+              >Optimum requirements is required.</span>
+           </div>
+
+        </div>
+
+        <div class="field" style="margin: 10px">
+          <label class="label">Issues</label>
+          <div class="control">
+            <textarea
+              class="input"
+              placeholder="Enter text"
+              ng-model="issues"
+              name="issues"
+            ></textarea>
+           </div>
+        </div>
+
+        <div class="field" style="margin: 10px">
+          <label class="label">Version</label>
+          <div class="control">
+            <input
+              class="input"
+              placeholder="Enter text"
+              ng-model="version"
+              name="version"
+              required
+            ></input>
+            <span ng-show="SoftwareForm.version.$error.required" style="color: red; margin-top:20px"
+              >Version is required.</span>
+           </div>
+
+        <div class="field" style="margin: 10px">
+          <label class="label">Date of release</label>
+          <div class="control">
+            <input
+              class="input"
+              type="date"
+              placeholder="Text input"
+              ng-model="date_of_release"
+              name="date_of_release"
+              required
+            />
+            <span ng-show="SoftwareForm.date_of_release.$error.required" style="color: red; margin-top:20px"
+              >Date of release is required.</span>
+           </div>
+
+        <button
+          class="btn-6"
+          type="submit"
+          style="margin: 20px"
+          ng-click="Submit()"
+        >
+          <span>Submit</span>
+        </button>
+      </form>
+      <script>
+        var app = angular.module("mainApp", []);
+        app.controller("softwareCtrl", function($scope,$http) {
+          $scope.name = "";
+          $scope.softwareID = "";
+          $scope.developer = "";
+          $scope.link = "";
+          $scope.minimum_requirements = "";
+          $scope.optimum_requirements = "";
+          $scope.issues = "";
+          $scope.version = "";
+          $scope.date_of_release = "";
+          $scope.cost = "";
+          $scope.Submit = function() {
+            console.log($scope.name);
+            console.log($scope.developer);
+            console.log($scope.minimum_requirements);
+            console.log($scope.optimum_requirements);
+            console.log($scope.cost);
+            console.log($scope.issues);
+            console.log($scope.softwareID);
+            console.log($scope.link);
+            console.log($scope.version);
+            console.log($scope.date_of_release);
+            var data = {
+              name: $scope.name,
+              softwareID: $scope.softwareID,
+              developer: $scope.developer,
+              link: $scope.link,
+              minimum_requirements: $scope.minimum_requirements,
+              optimum_requirements: $scope.date,
+              issues: $scope.issues,
+              version: $scope.version,
+              date_of_release: $scope.date_of_release,
+              cost: $scope.cost,
+            };
+            $http.post("http://localhost:3000/pc", data).then(
+              function(response) {
+                if(response['data']=="PC already exists in database"){
+                  alert("Data already exists");
+                }
+                else{
+                  alert("Record added");
+                }
+              },
+               
+            );
+
+
+          };
+        });
+    
+ 
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View PCs</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript">
+
+        var app = angular.module('serviceApp', []);
+        
+        app.controller('serviceCtrl', function ($scope, $http) {
+        
+        $http({
+        
+        method: 'GET',
+        
+        url: 'http:localhost:3000/pc'
+        
+        }).then(function success(response) {
+        
+         $scope.lists = response.data;
+         console.log("success")
+        
+        }, function error(response) {
+        console.log("error")
+        });
+        
+        
+    
+        
+        });
+        
+        </script>
+
+        <style>
+            table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            }
+
+            table {
+                  border-collapse: collapse;
+                  width: 100%;
+                  border: 1px solid #ddd;
+                  font-size: 18px;
+                }
+
+            th, td {
+                  text-align: left;
+                  padding: 16px;
+            }
+
+                
+        </style>
+        </head>
+        
+        <body>
+            <center>
+                <div class="nine">
+                    <h1>View PCs</h1>
+                  </div>
+            </center>
+        <div ng-app="serviceApp" ng-controller="serviceCtrl">
+
+            <table style="width: 100%;">
+                <tr>
+                    <th style="width:100px">Name</th>
+                    <th style="width:50px">Product ID</th>
+                    <th style="width:50px">Price</th>
+                    <th style="width:200px">Link</th>
+                    <th style="width:100px">OEM</th>
+                    <th style="width:50px">Service Locations</th>
+                    <th style="width:100px">CPU</th>
+                    <th style="width:100px">GPU</th>
+                    <th style="width:100px">Storage</th>
+                    <th style="width:100px">Memory</th>
+                    <th style="width:100px">Additional Info</th>
+                </tr>
+            </table>
+        
+        <div ng-repeat="list in lists">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width:100px">{{list['name']}}</td>
+                    <td style="width:50px">{{list['productID']}}</td>
+                    <td style="width:50px">{{list['price']}}</td>
+                    <td style="width:200px">{{list['link']}}</td>
+                    <td style="width:100px">{{list['oem']}}</td>
+                    <td style="width:50px">{{list['service_locations']}}</td>
+                    <td style="width:100px">{{list['cpu']}}</td>
+                    <td style="width:100px">{{list['gpu']}}</td>
+                    <td style="width:100px">{{list['storage']}}</td>
+                    <td style="width:100px">{{list['memory']}}</td>
+                    <td style="width:100px">{{list['additional_info']}}</td>
+                </tr>
+
+
+
+            </table>
+            </div>
+        
+        </div>
+        
+        </body>
+    
+</body>
+</html>
