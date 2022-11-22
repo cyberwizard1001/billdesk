@@ -11,7 +11,5 @@ var software = mongoose.model("software", {
     version: { type: String },
     date_of_release: { type: String },
     cost : {type: Number},
-    
-  });
-  
+      
   module.exports = {software : software};
